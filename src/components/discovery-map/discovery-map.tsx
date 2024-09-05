@@ -732,7 +732,7 @@ export class DiscoveryMapComponent {
 
   private updatePositionArray(positionData: any, param: Param, dataIndex: number) {
     const group = this.innerOptions.map?.cluster
-      ? Leaflet.markerClusterGroup()
+      ? this.mapOpts?.borderRadius ? Leaflet.markerClusterGroup({maxClusterRadius: this.mapOpts.borderRadius}) : Leaflet.markerClusterGroup()
       : Leaflet.featureGroup();
     const path = MapLib.updatePositionArrayToLeaflet(positionData.positions);
     if ((positionData.positions || []).length > 1 && !!positionData.line) {
